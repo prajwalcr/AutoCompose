@@ -1,3 +1,7 @@
+'''
+Program to split poems among each of the eight emotion categories
+'''
+
 import json
 import pandas as pd
 import os
@@ -7,6 +11,12 @@ from nrclex import NRCLex
 import nltk
 nltk.download('punkt')
 
+'''
+nrclex python library is used instead of EmoLex dataset due to its speed bonus and simplicity
+nrclex also uses the same dataset that we are creating
+'''
+
+# Creating EmoLex dataset if it does not already exist in project
 if not os.path.exists("data/EmoLex.csv"):
     data = {"word":[], "emotion":[], "association":[]}
 
@@ -22,6 +32,7 @@ if not os.path.exists("data/EmoLex.csv"):
     emolex.to_csv("data/EmoLex.csv", index=False)
     f.close()
 
+# We have not used this emolex dataframe. We have used the nrclex library instead.
 emolex = pd.read_csv("data/EmoLex.csv")
 f = open("data/Poems.json", "r")
 poems = json.load(f)
@@ -36,11 +47,16 @@ for i, poem in enumerate(poems):
     id = poem["id"]
     content = poem["poem"]
 
+    # Creating a dictionary with frequencies of each of the emotions associated with a poem
     emotion = NRCLex(content).affect_frequencies
+
+    # Removing degree of positivity and negativity from the dictionary as we are only concerned with emotions
     emotion.pop("positive")
     emotion.pop("negative")
 
     if len(emotion) == 0:
+        # Missing indicates a poem that does not pertain to any particular emotion
+        # Models for all emotion categories use these poems for training
         missing += 1
     else:
         max_val = max(emotion.values())
