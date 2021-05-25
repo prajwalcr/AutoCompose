@@ -9,7 +9,7 @@ from collections import defaultdict
 from nrclex import NRCLex
 
 import nltk
-nltk.download('punkt')
+# nltk.download('punkt')
 
 '''
 nrclex python library is used instead of EmoLex dataset due to its speed bonus and simplicity
@@ -34,13 +34,14 @@ if not os.path.exists("data/EmoLex.csv"):
 
 # We have not used this emolex dataframe. We have used the nrclex library instead.
 emolex = pd.read_csv("data/EmoLex.csv")
-f = open("data/Poems.json", "r")
+f = open("data/custom_poems.json", "r")
 poems = json.load(f)
 print("Number of poems:", len(poems))
 
 emotion_list = ["anger", "anticipation", "disgust", "fear", "joy", "sadness", "surprise", "trust"]
 poem_emotions = defaultdict(list)
 missing = 0
+missing_poems = []
 
 for i, poem in enumerate(poems):
     score = defaultdict(int)
@@ -58,13 +59,21 @@ for i, poem in enumerate(poems):
         # Missing indicates a poem that does not pertain to any particular emotion
         # Models for all emotion categories use these poems for training
         missing += 1
+        missing_poems.append(poem)
     else:
         max_val = max(emotion.values())
-        if max_val == 0:
+        if list(emotion.values()).count(max_val) > 3:
             missing += 1
-        for item in emotion.items():
-            if item[1] >= max_val:
-                poem_emotions[item[0]].append(poem)
+            missing_poems.append(poem)
+        elif list(emotion.values()).count(max_val) > 1:
+            pass
+        else:
+            poem_emotions[max(emotion, key=emotion.get)].append(poem)
+        # if max_val == 0:
+        #     missing += 1
+        # for item in emotion.items():
+        #     if item[1] >= max_val:
+        #         poem_emotions[item[0]].append(poem)
 
     if i % 1000 == 0:
         print(i)
@@ -79,4 +88,8 @@ for i in emotion_list:
     with open("data/"+i+".json", "w") as outfile:
         json.dump(poem_emotions[i], outfile)
 
+with open("data/missing.json", "w") as outfile:
+    json.dump(missing_poems, outfile)
+
 print("Total number of poems in all categories: ", tot)
+
