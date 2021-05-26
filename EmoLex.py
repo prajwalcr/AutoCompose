@@ -62,7 +62,7 @@ for i, poem in enumerate(poems):
         missing_poems.append(poem)
     else:
         max_val = max(emotion.values())
-        if list(emotion.values()).count(max_val) > 3:
+        if list(emotion.values()).count(max_val) > 6:
             missing += 1
             missing_poems.append(poem)
         elif list(emotion.values()).count(max_val) > 1:
