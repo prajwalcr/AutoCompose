@@ -13,3 +13,6 @@
 [submodule "models/disgust2"]
 	path = models/disgust2
 	url = https://github.com/prajwalcr/poetry-disgust_gpt2
+[submodule "models/fear2"]
+	path = models/fear2
+	url = https://github.com/prajwalcr/poetry-fear_gpt2
