@@ -10,3 +10,6 @@
 [submodule "models/anticipation2"]
 	path = models/anticipation2
 	url = https://github.com/prajwalcr/poetry-anticipation_gpt2
+[submodule "models/disgust2"]
+	path = models/disgust2
+	url = https://github.com/prajwalcr/poetry-disgust_gpt2
