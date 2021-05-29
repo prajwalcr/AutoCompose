@@ -1,0 +1,3 @@
+[submodule "models/neutral"]
+	path = models/neutral
+	url = https://huggingface.co/prajwalcr/poetry_gpt2
