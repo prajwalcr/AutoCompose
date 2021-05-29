@@ -4,3 +4,6 @@
 [submodule "models/joy2"]
 	path = models/joy2
 	url = https://github.com/prajwalcr/poetry-joy_gpt2
+[submodule "models/anger2"]
+	path = models/anger2
+	url = https://github.com/prajwalcr/poetry-anger_gpt2
