@@ -8,12 +8,10 @@ import os
 
 from src.utils import *
 
-IMAGES_DIR = os.path.join('../static', 'images')
-
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = "replace this"
-app.config['UPLOAD_FOLDER'] = IMAGES_DIR
+app.config.from_pyfile("config.py")
+
 
 
 class GenerateForm(FlaskForm):
@@ -78,5 +76,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
 
