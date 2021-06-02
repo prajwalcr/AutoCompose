@@ -36,8 +36,13 @@ def index():
         emotion = form.emotion.data
 
         # load the model corresponding to the selected emotion
-        model = GPT2LMHeadModel.from_pretrained("models/"+emotion+"2")
-        tokenizer = GPT2Tokenizer.from_pretrained("models/"+emotion+"2")
+        if emotion == "neutral":
+            print(emotion)
+            model = GPT2LMHeadModel.from_pretrained("models/neutral")
+            tokenizer = GPT2Tokenizer.from_pretrained("models/neutral")
+        else:
+            model = GPT2LMHeadModel.from_pretrained("models/"+emotion+"2")
+            tokenizer = GPT2Tokenizer.from_pretrained("models/"+emotion+"2")
 
         model.eval()
 
