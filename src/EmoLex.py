@@ -17,10 +17,10 @@ nrclex also uses the same dataset that we are creating
 '''
 
 # Creating EmoLex dataset if it does not already exist in project
-if not os.path.exists("data/EmoLex.csv"):
+if not os.path.exists("../data/EmoLex.csv"):
     data = {"word":[], "emotion":[], "association":[]}
 
-    f = open("data/NRC-Emotion-Lexicon.txt", "r")
+    f = open("../data/NRC-Emotion-Lexicon.txt", "r")
     for line in f.readlines():
         cols = line.split()
         if len(cols) == 3 and cols[1] != "negative" and cols[1] != "positive":
@@ -33,8 +33,8 @@ if not os.path.exists("data/EmoLex.csv"):
     f.close()
 
 # We have not used this emolex dataframe. We have used the nrclex library instead.
-emolex = pd.read_csv("data/EmoLex.csv")
-f = open("data/custom_poems.json", "r")
+emolex = pd.read_csv("../data/EmoLex.csv")
+f = open("../data/custom_poems.json", "r")
 poems = json.load(f)
 print("Number of poems:", len(poems))
 
@@ -85,10 +85,10 @@ tot = 0
 for i in emotion_list:
     print("Number of poems belonging to {} = {}".format(i, len(poem_emotions[i])))
     tot += len(poem_emotions[i])
-    with open("data/"+i+".json", "w") as outfile:
+    with open("../data/"+i+".json", "w") as outfile:
         json.dump(poem_emotions[i], outfile)
 
-with open("data/missing.json", "w") as outfile:
+with open("../data/missing.json", "w") as outfile:
     json.dump(missing_poems, outfile)
 
 print("Total number of poems in all categories: ", tot)

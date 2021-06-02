@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <title>
+          Auto Compose
+      </title>
+      <link rel = "icon" href ={{context['logo']}} type = "image/x-icon">
+   </head>
+   <style>
+      body {
+      background-color: #242323;
+      /*color: white;*/
+      }
+
+      li{
+          list-style: none;
+          margin: 10px 10px;
+          display: inline-block;
+          font-size: 30px;
+          padding: 2px 2px;
+          color: #7070d4;
+          /*border: 1px solid #d45050;*/
+          border-radius: 100%;
+          transition: .5s;
+      }
+
+      li:hover{
+          color: #4040d4;
+          /*border: 1px solid #d00000;*/
+      }
+   </style>
+   <body class="text-center text-white-50">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+           {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                  <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{ message }}
+              </div>
+           {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+	  <div class="container" style="max-width: 800px;">
+        <form method="POST" class="form-generate" style="color:#b5b5b9" id="form">
+            {{ context['form'].hidden_tag() }}
+            <img class="mb-2 mt-4" src={{context['logo']}} alt="logo" width="150" height="150">
+            <h1 class="h3 mb-3 font-weight-normal">
+                <span class="font-weight-bold" style="color: deepskyblue">A</span><span style="color: deepskyblue">uto </span>
+                <span class="font-weight-bold" style="color: deepskyblue">C</span><span style="color: deepskyblue">ompose</span>
+            </h1>
+            <br>
+            <div style="max-width: 700px">
+            <p style="overflow-wrap: break-word; max-width: 100%;">
+                Compose an original poem embedding the emotion of your choice in less than 30 seconds.
+                You only have to select the emotion of your choice from the dropdown menu and hit the "Generate Poem"
+                button and wait for the magic to happen.
+            </p>
+            <p style="overflow-wrap: break-word; max-width: 100%;">
+                Our AI has been trained with modern natural language processing techniques to capture the
+                intricacies involved in writing poetry and generates original poems that never existed before.
+                Get ready to be inspired.
+            </p>
+            </div>
+            <br>
+
+
+            {{ context['form'].emotion.label() }}
+            {{ context['form'].emotion(class="form-control", placeholder="Select Emotion") }}
+
+            <br>
+
+            {{ context['form'].submit(class="btn btn-lg btn-block btn-primary") }}
+            <button class="btn btn-lg btn-block btn-primary" id="fake-button" name="submit-v2" disabled hidden>
+                <span class="spinner-border spinner-border-sm"></span>
+                Generating Poem ...
+            </button>
+<!--            <input class="btn btn-lg btn-block btn-primary" id="fake-button" name="submit-v2" type="button" value="Generating Poem ..." hidden disabled>-->
+
+        </form>
+
+
+    </div>
+
+<!--      <hr class="text-white bg-light">-->
+	<br>
+
+    {% if context['poem'] %}
+        <div class="container">
+            <div class="row">
+                <div class="col"><hr class="bg-light"></div>
+                <div class="col-auto font-weight-bold h6" style="color: deepskyblue;">{{context['title']}}</div>
+                <div class="col"><hr class="bg-light"></div>
+            </div>
+            {% for para in context['poem'] %}
+                <p class="poem-line my-0 py-0" style="color: deepskyblue">{{para}}</p>
+            {% endfor %}
+            <hr class="bg-light" style="height:3px;" >
+        </div>
+    {% endif %}
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <p style="overflow-wrap: break-word; max-width: 100%;">
+            The poems generated might include offensive content which may not be suitable for everyone but we try
+            our best to filter them out.
+            Feel free to check out the project on github or to mail us for more insights into how the AI was developed.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="container icons">
+        <ul>
+            <li><a href="https://github.com/prajwalcr/AutoCompose" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="mailto:prajwalguptacr@gmail.com"><i class="far fa-envelope"></i></a></li>
+        </ul>
+    </div>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+      <script>
+          if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+          }
+          document.getElementById("submit").onclick = function() {
+            this.style.display="none"
+            document.getElementById("fake-button").removeAttribute("hidden")
+          }
+
+      </script>
+   </body>
+
+</html>

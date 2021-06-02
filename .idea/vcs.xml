@@ -2,5 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/anger2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/anticipation2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/disgust2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/fear2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/joy2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/neutral" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/sadness2" vcs="Git" />
   </component>
 </project>
