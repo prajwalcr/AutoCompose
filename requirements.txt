@@ -31,9 +31,9 @@ sacremoses==0.0.45
 six==1.16.0
 textblob==0.15.3
 tokenizers==0.10.3
-torch==1.8.1+cu102
+torch==1.8.1+cpu
 torchaudio==0.8.1
-torchvision==0.9.1+cu102
+torchvision==0.9.1+cpu
 tqdm==4.61.0
 transformers==4.6.1
 typing-extensions==3.10.0.0
