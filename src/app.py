@@ -38,11 +38,11 @@ def index():
         # load the model corresponding to the selected emotion
         if emotion == "neutral":
             print(emotion)
-            model = GPT2LMHeadModel.from_pretrained("prajwalcr/neutral")
-            tokenizer = GPT2Tokenizer.from_pretrained("prajwalcr/neutral")
+            model = GPT2LMHeadModel.from_pretrained("prajwalcr/poetry_gpt2")
+            tokenizer = GPT2Tokenizer.from_pretrained("prajwalcr/poetry_gpt2")
         else:
-            model = GPT2LMHeadModel.from_pretrained("prajwalcr/"+emotion)
-            tokenizer = GPT2Tokenizer.from_pretrained("prajwalcr/"+emotion)
+            model = GPT2LMHeadModel.from_pretrained("prajwalcr/poetry-"+emotion+"_gpt2")
+            tokenizer = GPT2Tokenizer.from_pretrained("prajwalcr/poetry-"+emotion+"_gpt2")
 
         model.eval()
 
