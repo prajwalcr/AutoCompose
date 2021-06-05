@@ -1,4 +1,5 @@
 -f https://download.pytorch.org/whl/torch_stable.html
+algorithmia==1.8.1
 certifi==2020.12.5
 chardet==4.0.0
 click==8.0.1
