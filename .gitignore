@@ -4,4 +4,4 @@ models/*/pytorch_model.bin
 autocompose/*
 .idea/workspace.xml
 .idea/*.iws
-.env
+src/.env

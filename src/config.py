@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 
-load_dotenv("../.env")
+load_dotenv(".env")
 
 IMAGES_DIR = os.path.join('../static', 'images')
 
