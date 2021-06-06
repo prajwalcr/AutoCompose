@@ -42,7 +42,10 @@ def index():
         client = Algorithmia.client(ALGORITHMIA_API_KEY)
 
         # Create the algorithm object using the Summarizer algorithm
-        algo = client.algo('pgcr/PoetryGeneration/1.0.0')
+        if emotion == "neutral":
+            algo = client.algo('pgcr/PoetryGeneration/1.1.0')
+        else:
+            algo = client.algo('pgcr/PoetryGeneration'+emotion.capitalize()+'/1.0.0')
 
         try:
             # Get the result
