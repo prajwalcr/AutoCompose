@@ -1,5 +1,9 @@
 # AutoCompose
 
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/prajwalcr/AutoCompose)
+[![MIT license](https://img.shields.io/badge/License-MIT-important.svg)](https://lbesson.mit-license.org/)
+[![Website shields.io](https://img.shields.io/badge/Webiste-Up-success.svg)](http://autocompose.herokuapp.com/)
+
 ![home screen](./readme-assets/home-screen.png)
 
 <h2 align="center"><a  href="http://autocompose.herokuapp.com/">Live Demo</a></h2>
@@ -21,6 +25,7 @@
   - [Models](#models)
   - [Deploying Working Demo](#deploying-working-demo)
 - [Directory Structure](#directory-structure)
+- [Sample Poems](#sample-poems)
 
 # Technologies Used
 
@@ -60,8 +65,8 @@ The dataset was obtained from the <a href="https://www.gutenberg.org/">Project G
 
 ### Models
 
-Initially, the GPT-2 model was trained on the neutral poems. This gave us the 'neutral' model to generate any general poem. Models for each emotion were created by fine-tuning this 'neutral' model on poems of corresponding emotions. The entire process of creating these models can be found in this [notebook](./notebooks/AutoCompose.ipynb).
-These models were uploaded to the Huggingface model hub.<br> Following are the links to the models of each emotion:
+Initially, the GPT-2 model was trained on the neutral poems. This gave us the 'neutral' model to generate any general poem. Models for each emotion were created by fine-tuning this 'neutral' model on poems of corresponding emotions. The entire process of building these models can be found in colab [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_8UUlOjd_KnSIxlSdsF72MeSK3lprnbo?usp=sharing).
+These models can also be found in the Huggingface model hub.<br> Following are the links to the models of each emotion:
 
 - [Anger](https://huggingface.co/prajwalcr/poetry-anger_gpt2)
 - [Anticipation](https://huggingface.co/prajwalcr/poetry-anticipation_gpt2)
@@ -98,4 +103,117 @@ Algorithmia was used to build an API to interact with these models. A flask app 
 ┃ ┣ 📂static
 ┃ ┃ ┗ 📂images
 ┃ ┣ 📂templates
+```
+
+# Sample Poems
+
+### Anger
+
+_Angry Thoughts_
+
+```
+I am not jealous; but this does vex
+My heart so full of misery that I cannot stop
+From angry thoughts.  This brings me relief,
+And a painful torment; and I
+Am content to part from thee alone.
+```
+
+### Anticipation
+
+_God in Mystery_
+
+```
+Thence down the river to the mountain-side
+I travelled with my boats and my oarsmen,
+To seek a haven near the southern cape
+Where dwelt some mighty god in mystery,
+Unknowing I wandered therefrom, so
+Unconscious I lay, and rested there.
+```
+
+### Disgust
+
+_Daisies and Filth_
+
+```
+The little pool, by the house-wall,
+Is covered with daisies and filth;
+The fountains are withered and dim,
+And the lizards writhe in rags.
+```
+
+### Fear
+
+_I See Thee in a Far Corner_
+
+```
+I see thee in a far corner,
+With a stealthy stride, and a trembling soul
+I know thou, Dear, who should'st not fear
+That I should come near thee!
+I know thee.
+```
+
+### Joy
+
+_Gentle-Throat_
+
+```
+Thy soul has joy, and thy soul is free,
+And all the things it loves can live
+In thy love for me and thee!
+O gentle-throat, why sing so low,
+Or do thy music too loudly?
+Whence are all thy numbers fit?
+If that thy mind is fix'd upon one,
+It joys not to hear thee speak.
+```
+
+### Neutral
+
+_Moon_
+
+```
+He took them home, and soon set them down
+In a chest at the door of his room,
+And asked them if they knew
+What the moon was about.
+```
+
+### Sadness
+
+_Dear Heart_
+
+```
+For you, dear heart, so lone and worn and weary,
+Hear me, and the silence dies,
+That still I think you must come near me,
+And not so be blest.
+```
+
+### Surprise
+
+_Nature's Own_
+
+```
+He is a wild magician,
+Who takes up the air and vanishes
+As though his name were Nature's own,
+And that it were Nature's own prompting,
+That he should leave school in such a way.
+```
+
+### Trust
+
+_Damsels in Disguise_
+
+```
+He sees the aged damsels in disguise,
+And how the princely damsels are dressed;
+The queen of Sariola, as she stands,
+Is clad in rich embroidery;
+And every thing that she does wear
+Is a royal dame in finest form,
+And a queen in fairest posture too.
 ```
