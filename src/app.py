@@ -20,7 +20,7 @@ ALGORITHMIA_API_KEY = os.getenv('ALGORITHMIA_API_KEY', "NO_KEY")
 
 class GenerateForm(FlaskForm):
 
-    choices = ["anger", "anticipation", "disgust", "fear", "neutral"]
+    choices = ["anger", "anticipation", "disgust", "fear", "neutral", "joy", "sadness", "surprise", "trust"]
 
     emotion = SelectField(label="Select Emotion", choices=choices, validators=[DataRequired()])
     submit = SubmitField(label="Generate Poem")
@@ -44,6 +44,8 @@ def index():
         # Create the algorithm object using the Summarizer algorithm
         if emotion == "neutral":
             algo = client.algo('pgcr/PoetryGeneration/1.1.0')
+        elif emotion == "joy":
+            algo = client.algo('pgcr/PoetryGeneration'+emotion.capitalize()+'/1.0.1')
         else:
             algo = client.algo('pgcr/PoetryGeneration'+emotion.capitalize()+'/1.0.0')
 

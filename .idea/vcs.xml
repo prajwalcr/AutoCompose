@@ -9,5 +9,7 @@
     <mapping directory="$PROJECT_DIR$/models/joy2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/models/neutral" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/models/sadness2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/surprise2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/models/trust2" vcs="Git" />
   </component>
 </project>
